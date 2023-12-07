@@ -3,6 +3,8 @@ const express = require('express');
 require('dotenv').config()
 const {connection} = require("./db");
 const {userRouter} = require("./Routes/user.routes");
+const {blogRouter} = require("./Routes/blogs.routes");
+
 
 var cors = require('cors')
 
@@ -12,6 +14,7 @@ app.use(cors())
 app.use(express.json());
 
 app.use("/api", userRouter);
+app.use("/api/blogs", blogRouter);
 
 
 
