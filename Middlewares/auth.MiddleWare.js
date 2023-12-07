@@ -11,6 +11,7 @@ const auth = (req,res,next)=>{
             if(decoded){
                 req.body.userID = decoded.userID;
                 req.body.username = decoded.username;
+                req.body.useravatar = decoded.useravatar;
                 next();
             }
             else{

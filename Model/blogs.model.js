@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 
 const blogSchema = mongoose.Schema({
     username:String,
+    userID:String,
+    useravatar:String,
     title: String,
     content:String,
     category:String,
-    date:Date,
+    date:String,
     likes:Number,
     comments: Array
 },{

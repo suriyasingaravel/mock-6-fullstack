@@ -33,12 +33,11 @@ blogRouter.get("/", async(req,res)=>{
 
 blogRouter.patch("/:id", async(req,res)=>{
     const {id} = req.params;
-    const blog = await BlogModel.findOne({_id: id});
-    console.log(blog._id)
+    const blog = await BlogModel.findOne({"_id": id});
     try {
         console.log(req.body.userID)
-        if(req.body.userID === blog._id){
-            await BlogModel.findByIDAndUpdate({"_id": id}, req.body);
+        if(req.body.userID == blog.userID){
+            await BlogModel.findByIdAndUpdate({ "_id": id }, req.body);
             res.status(200).send({"msg": "Note updated successfully"});
         }
 
@@ -55,13 +54,13 @@ blogRouter.patch("/:id", async(req,res)=>{
 
 blogRouter.delete("/:id", async(req,res)=>{
     const {id} = req.params;
-    const blog = await BlogModel.findOne({id: id});
+    const blog = await BlogModel.findOne({_id: id});
   
     try {
         // console.log(blog._id)
         // req.body.userID
-        if(req.body.userID === blog._id){
-            await BlogModel.findByIDAndDelete({"_id": id});
+        if(req.body.userID === blog.userID){
+            await BlogModel.findByIdAndDelete({"_id": id});
             res.status(200).send({"msg": "Note deleted successfully"});
         }
 
